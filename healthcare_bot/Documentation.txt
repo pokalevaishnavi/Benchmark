@@ -1,0 +1,8 @@
+Service Account : dialogflow-admin-service
+ID: 104402755943754445632
+email : dialogflow-admin-service@demoagent-wgo9.iam.gserviceaccount.com
+
+
+project_id = 'demoagent-wgo9'  
+
+command to run html file: python -m http.server 8000
