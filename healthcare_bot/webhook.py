@@ -2,12 +2,15 @@
 
 from flask import Flask, request, jsonify
 from db_logger import log_conversation
-
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    req = request.get_json()
+    req = request.get_json(force=True)
+    print("✅ Webhook triggered")
+    print("👉 Incoming request:", req)
     
     # 🔍 Extract user message and intent
     user_message = req['queryResult']['queryText']
