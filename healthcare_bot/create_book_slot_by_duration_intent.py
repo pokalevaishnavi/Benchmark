@@ -3,6 +3,7 @@ from google.cloud import dialogflow_v2 as dialogflow
 from google.api_core import exceptions
 from google.cloud.dialogflow_v2.types import Intent, Context
 from google.protobuf.struct_pb2 import Struct
+from db_logger import log_conversation
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/Dell/coding/Benchmark/healthcare_bot/demoagent-wgo9-38b8fd98fea6.json"
 

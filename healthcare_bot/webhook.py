@@ -1,0 +1,24 @@
+# webhook.py
+
+from flask import Flask, request, jsonify
+from db_logger import log_conversation
+
+app = Flask(__name__)
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    req = request.get_json()
+    
+    # 🔍 Extract user message and intent
+    user_message = req['queryResult']['queryText']
+    bot_response = req['queryResult']['fulfillmentText']
+    intent_name = req['queryResult']['intent']['displayName']
+    session_id = req['session'].split('/')[-1]
+
+    # ✅ Log to MySQL
+    log_conversation(session_id, user_message, bot_response, intent_name)
+
+    return jsonify({'fulfillmentText': bot_response})
+
+if __name__ == '__main__':
+    app.run(port=5000, debug=True)
