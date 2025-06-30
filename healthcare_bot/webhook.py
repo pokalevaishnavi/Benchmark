@@ -6,6 +6,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/', methods=['GET'])
+def home():
+    return '✅ HealthcareBot Webhook is running!'
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(force=True)
