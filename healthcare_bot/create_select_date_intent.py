@@ -20,30 +20,11 @@ def create_select_date_intent():
         "lifespan_count": 5
     }
 
-    text = Intent.Message.Text(text=["Please select the session duration from the options below:"])
-    text_message = Intent.Message(text=text)
-
-    payload_struct = Struct()
-    payload_struct.update({
-        "richContent": [[
-            {
-                "type": "chips",
-                "options": [
-                    {"text": "30 minutes"},
-                    {"text": "45 minutes"},
-                    {"text": "1 hour"},
-                    {"text": "2 hours"}
-                ]
-            }
-        ]]
-    })
-
-    payload_message = Intent.Message(payload=payload_struct)
-
+    
     intent = Intent(
         display_name='Select Date',
         training_phrases=training_phrases,
-        messages=[text_message, payload_message],
+        messages=[],
         input_context_names=[input_context],
         output_contexts=[output_context]
     )

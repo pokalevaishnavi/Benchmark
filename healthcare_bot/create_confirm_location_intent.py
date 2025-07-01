@@ -21,29 +21,11 @@ def create_confirm_location_intent():
         "lifespan_count": 5
     }
 
-    text = Intent.Message.Text(text=["Please select a day from the options below:"])
-    text_message = Intent.Message(text=text)
-
-    payload_struct = Struct()
-    payload_struct.update({
-        "richContent": [[
-            {
-                "type": "chips",
-                "options": [
-                    {"text": "Monday"},
-                    {"text": "Tuesday"},
-                    {"text": "Wednesday"},
-                    {"text": "Thursday"}
-                ]
-            }
-        ]]
-    })
-    payload_message = Intent.Message(payload=payload_struct)
-
+    
     intent = Intent(
         display_name='Confirm Location',
         training_phrases=training_phrases,
-        messages=[text_message, payload_message],
+        messages=[],
         input_context_names=[input_context],
         output_contexts=[output_context]
     )

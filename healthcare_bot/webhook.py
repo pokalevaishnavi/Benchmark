@@ -54,6 +54,21 @@ def webhook():
                 ]]}}
             ]
         })
+        
+    elif intent_name == "Confirm Location":
+        return jsonify({
+            "fulfillmentMessages": [
+                { "text": { "text": ["Select a preferred day:"] }},
+                { "payload": { "richContent": [[
+                    { "type": "chips", "options": [
+                        { "text": "Monday" },
+                        { "text": "Tuesday" },
+                        { "text": "Wednesday" },
+                        { "text": "Thursday" }
+                    ]}
+                ]]}}
+            ]
+        })
 
     elif intent_name == "Select Date":
         return jsonify({
@@ -61,28 +76,15 @@ def webhook():
                 { "text": { "text": ["Choose a date for your appointment:"] }},
                 { "payload": { "richContent": [[
                     { "type": "chips", "options": [
-                        { "text": "Tomorrow" },
-                        { "text": "Next Friday" },
-                        { "text": "This Weekend" }
-                    ]}
-                ]]}}
-            ]
-        })
-
-    elif intent_name == "Select Session Length":
-        return jsonify({
-            "fulfillmentMessages": [
-                { "text": { "text": ["Select your session duration:"] }},
-                { "payload": { "richContent": [[
-                    { "type": "chips", "options": [
                         { "text": "30 minutes" },
-                        { "text": "60 minutes" },
-                        { "text": "90 minutes" }
+                        { "text": "45 minutes" },
+                        { "text": "1 hour" },
+                        { "text": "2 hour" }
                     ]}
                 ]]}}
             ]
         })
-
+        
     elif intent_name == "Book Slot by Duration":
         return jsonify({
             "fulfillmentMessages": [
@@ -95,6 +97,14 @@ def webhook():
                         { "text": "4:30 PM" }
                     ]}
                 ]]}}
+            ]
+        })
+        
+    elif intent_name == "Confirm Booking":
+        return jsonify({
+            "fulfillmentMessages": [
+                { "text": { "text": ["Your session has been booked!"] }},
+               
             ]
         })
 

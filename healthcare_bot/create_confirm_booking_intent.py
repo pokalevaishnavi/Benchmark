@@ -28,12 +28,12 @@ def create_confirm_booking_intent():
         text=dialogflow.Intent.Message.Text(text=["Your session has been booked!"])
     )
     
-    input_context = "awaiting-confirmation"
+    input_context = f"projects/{project_id}/agent/sessions/-/contexts/awaiting-confirmation"
 
     intent = dialogflow.Intent(
         display_name='Confirm Booking',
         training_phrases=training_phrases,
-        messages=[text_message],
+        messages=[],
         input_context_names=[input_context]
     )
 

@@ -27,32 +27,12 @@ def create_location_selection_intent():
         lifespan_count=5
     )
 
-    text = dialogflow.Intent.Message.Text(text=["Could you please specify the location you prefer?"])
-    text_message = dialogflow.Intent.Message(text=text)
-
-    payload_struct = Struct()
-    payload_struct.update({
-        "richContent": [
-            [
-                {
-                    "type": "chips",
-                    "options": [
-                        {"text": "Pune"},
-                        {"text": "Mumbai"},
-                        {"text": "Ratnagiri"},
-                        {"text": "Kolhapur"}
-                    ]
-                }
-            ]
-        ]
-    })
-
-    payload_message = dialogflow.Intent.Message(payload=payload_struct)
+    
 
     intent = dialogflow.Intent(
         display_name='Select Location',
         training_phrases=training_phrases,
-        messages=[text_message, payload_message],
+        messages=[],
         input_context_names=[input_context.name],
         output_contexts=[output_context]
     )

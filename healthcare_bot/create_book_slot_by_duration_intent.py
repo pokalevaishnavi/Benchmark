@@ -29,32 +29,11 @@ def create_book_slot_by_duration_intent():
     lifespan_count=5
 )
 
-    text = dialogflow.Intent.Message.Text(text=["Please select a time slot from the options below:"])
-    text_message = dialogflow.Intent.Message(text=text)
-
-    payload_struct = Struct()
-    payload_struct.update({
-        "richContent": [
-            [
-                {
-                    "type": "chips",
-                    "options": [
-                        {"text": "10:00 AM"},
-                        {"text": "11:30 AM"},
-                        {"text": "3:00 PM"},
-                        {"text": "4:30 PM"}
-                    ]
-                }
-            ]
-        ]
-    })
-
-    payload_message = Intent.Message(payload=payload_struct)
-
+    
     intent = dialogflow.Intent(
         display_name='Book Slot by Duration',
         training_phrases=training_phrases,
-        messages=[text_message, payload_message],
+        messages=[],
         input_context_names=[input_context],
         output_contexts=[output_context]
     )
