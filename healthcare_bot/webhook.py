@@ -24,6 +24,80 @@ def webhook():
 
     # ✅ Log to MySQL
     log_conversation(session_id, user_message, bot_response, intent_name)
+    
+    if intent_name == "Select Service":
+        return jsonify({
+            "fulfillmentMessages": [
+                { "text": { "text": ["Please select a service:"] }},
+                { "payload": { "richContent": [[
+                    { "type": "chips", "options": [
+                        { "text": "Massage" },
+                        { "text": "Spa Service" },
+                        { "text": "Physiotherapy" },
+                        { "text": "Doctor Consultation" }
+                    ]}
+                ]]}}
+            ]
+        })
+
+    elif intent_name == "Select Location":
+        return jsonify({
+            "fulfillmentMessages": [
+                { "text": { "text": ["Select a preferred location:"] }},
+                { "payload": { "richContent": [[
+                    { "type": "chips", "options": [
+                        { "text": "Pune" },
+                        { "text": "Mumbai" },
+                        { "text": "Ratnagiri" },
+                        { "text": "Kolhapur" }
+                    ]}
+                ]]}}
+            ]
+        })
+
+    elif intent_name == "Select Date":
+        return jsonify({
+            "fulfillmentMessages": [
+                { "text": { "text": ["Choose a date for your appointment:"] }},
+                { "payload": { "richContent": [[
+                    { "type": "chips", "options": [
+                        { "text": "Tomorrow" },
+                        { "text": "Next Friday" },
+                        { "text": "This Weekend" }
+                    ]}
+                ]]}}
+            ]
+        })
+
+    elif intent_name == "Select Session Length":
+        return jsonify({
+            "fulfillmentMessages": [
+                { "text": { "text": ["Select your session duration:"] }},
+                { "payload": { "richContent": [[
+                    { "type": "chips", "options": [
+                        { "text": "30 minutes" },
+                        { "text": "60 minutes" },
+                        { "text": "90 minutes" }
+                    ]}
+                ]]}}
+            ]
+        })
+
+    elif intent_name == "Book Slot by Duration":
+        return jsonify({
+            "fulfillmentMessages": [
+                { "text": { "text": ["Choose a preferred time slot:"] }},
+                { "payload": { "richContent": [[
+                    { "type": "chips", "options": [
+                        { "text": "10:00 AM" },
+                        { "text": "11:30 AM" },
+                        { "text": "3:00 PM" },
+                        { "text": "4:30 PM" }
+                    ]}
+                ]]}}
+            ]
+        })
+
 
     return jsonify({'fulfillmentText': bot_response})
 
