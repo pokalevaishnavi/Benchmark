@@ -2,6 +2,7 @@ import mysql.connector
 from db_config import config
 
 def log_conversation(session_id, user_msg, bot_response, intent_name):
+    conn = None
     try:
         conn = mysql.connector.connect(**config)
         cursor = conn.cursor()
