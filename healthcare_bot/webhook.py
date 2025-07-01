@@ -25,7 +25,20 @@ def webhook():
     # ✅ Log to MySQL
     log_conversation(session_id, user_message, bot_response, intent_name)
     
-    if intent_name == "Select Service":
+    if intent_name == "Default Welcome Intent":
+        return jsonify({
+            "fulfillmentMessages": [
+                { "text": { "text": ["Hi there! Welcome to our Healthcare Bot. How can I assist you today?"] }},
+                { "payload": { "richContent": [[
+                    { "type": "chips", "options": [
+                        { "text": "View Services" },
+                        { "text": "Help" },
+                        { "text": "Exit" }
+                    ]}
+                ]]}}
+            ]
+        })
+    elif intent_name == "Select Service":
         return jsonify({
             "fulfillmentMessages": [
                 { "text": { "text": ["Please select a service:"] }},
