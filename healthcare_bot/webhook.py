@@ -18,7 +18,7 @@ def webhook():
     
     # 🔍 Extract user message and intent
     user_message = req['queryResult']['queryText']
-    bot_response = req['queryResult']['fulfillmentText']
+    bot_response = req['queryResult'].get('fulfillmentText', '')
     intent_name = req['queryResult']['intent']['displayName']
     session_id = req['session'].split('/')[-1]
 
